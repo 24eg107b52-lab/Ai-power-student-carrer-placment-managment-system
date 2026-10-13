@@ -1,16 +1,837 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M12 2L1 7l11 5 9-4.09V17h2V7L12 2z'/></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI-Powered Student Career & Placement Management System</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Powered Student Career & Placement Management System</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Chart.js for high-fidelity dashboards -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- Top Banner matching Project Specification -->
+  <header class="top-banner">
+    <div class="banner-content">
+      <div class="brand-title">
+        <h1>
+          <span>⚡</span>
+          AI-Powered Student Career & Placement Management System
+        </h1>
+        <p>Department of Computer Science & Engineering • Campus Placement Automation & Predictive AI</p>
+      </div>
+      <div style="display:flex; align-items:center; gap: 1rem; flex-wrap: wrap;">
+        <span class="badge-dept">B.Tech 2021-2025</span>
+        <div class="role-bar">
+          <span style="font-size:0.75rem; color:#cbd5e1; font-weight:600; margin-right:0.25rem;">SWITCH ROLE:</span>
+          <button class="role-btn active" onclick="switchRole('STUDENT')">🎓 Student</button>
+          <button class="role-btn" onclick="switchRole('TPO')">📊 Placement Officer (TPO)</button>
+          <button class="role-btn" onclick="switchRole('RECRUITER')">💼 Recruiter</button>
+          <button class="role-btn" onclick="switchRole('FACULTY')">👨‍🏫 Faculty</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="nav-container">
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="openTab('tab-pipeline')">
+        <span>🔄</span> System Workflow & AI Engine
+      </button>
+      <button class="nav-tab" onclick="openTab('tab-student')">
+        <span>🎓</span> Student Career Portal & Employability
+      </button>
+      <button class="nav-tab" onclick="openTab('tab-matching')">
+        <span>🤖</span> AI Job Matching & NLP Ranking
+      </button>
+      <button class="nav-tab" onclick="openTab('tab-interview')">
+        <span>🎙️</span> AI Mock Interview & Aptitude Prep
+      </button>
+      <button class="nav-tab" onclick="openTab('tab-analytics')">
+        <span>📈</span> Placement Analytics Dashboard (Fig 3)
+      </button>
+      <button class="nav-tab" onclick="openTab('tab-recruiter')">
+        <span>💼</span> Recruiter Candidate Screening
+      </button>
+      <button class="nav-tab" onclick="openTab('tab-upskilling')">
+        <span>📚</span> Skill-Gap Upskilling
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-container">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: SYSTEM WORKFLOW & AI ENGINE (Fig 1 & 2) -->
+    <!-- ========================================== -->
+    <div id="tab-pipeline" class="tab-pane active">
+
+      <!-- Fig 2 End-to-end Pipeline Header -->
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.4rem; font-weight: 800; color: #0f172a; margin-bottom: 0.25rem;">
+          End-to-End Placement Workflow Pipeline
+        </h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Fig 2: Integrated pipeline connecting student onboarding, predictive ML skill gap analysis, NLP-driven matching, simulated interviews, and final placement.
+        </p>
+      </div>
+
+      <!-- Fig 2 Visual Pipeline -->
+      <div class="workflow-pipeline">
+        <div class="pipeline-node" onclick="openTab('tab-student')">
+          <div class="node-icon-box" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);">
+            <span>👤</span>
+          </div>
+          <div class="node-title">1. Student Profile</div>
+          <div class="node-sub">Academics, CGPA, Resume</div>
+        </div>
+        <div class="pipeline-arrow">➔</div>
+
+        <div class="pipeline-node" onclick="openTab('tab-student')">
+          <div class="node-icon-box" style="background: linear-gradient(135deg, #0284c7, #06b6d4);">
+            <span>🧠</span>
+          </div>
+          <div class="node-title">2. Skill Analysis</div>
+          <div class="node-sub">Employability & Gaps</div>
+        </div>
+        <div class="pipeline-arrow">➔</div>
+
+        <div class="pipeline-node" onclick="openTab('tab-matching')">
+          <div class="node-icon-box" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+            <span>⚡</span>
+          </div>
+          <div class="node-title">3. AI Matching</div>
+          <div class="node-sub">TF-IDF & Cosine NLP</div>
+        </div>
+        <div class="pipeline-arrow">➔</div>
+
+        <div class="pipeline-node" onclick="openTab('tab-interview')">
+          <div class="node-icon-box" style="background: linear-gradient(135deg, #0284c7, #2563eb);">
+            <span>🎙️</span>
+          </div>
+          <div class="node-title">4. Interview Prep</div>
+          <div class="node-sub">Voice AI & Aptitude</div>
+        </div>
+        <div class="pipeline-arrow">➔</div>
+
+        <div class="pipeline-node" onclick="openTab('tab-analytics')">
+          <div class="node-icon-box" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
+            <span>🎓</span>
+          </div>
+          <div class="node-title">5. Placement</div>
+          <div class="node-sub">Final Offer & Analytics</div>
+        </div>
+      </div>
+
+      <!-- Fig 1: Conceptual illustration of the AI matching engine -->
+      <div class="grid-2">
+        <div class="card" style="background: #0f172a; color: white; border: none;">
+          <div class="card-header" style="border-bottom: 1px solid #334155;">
+            <div class="card-title" style="color: white;">
+              <span>🤖</span> AI ENGINE: Deep Matching & Scoring Architecture (Fig 1)
+            </div>
+            <span class="badge badge-amber">Interactive Neural Graph</span>
+          </div>
+          <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 1rem;">
+            Conceptual illustration of the AI neural matching network connecting student performance vectors to corporate requirement matrices.
+          </p>
+          <div class="neural-canvas-container">
+            <canvas id="neuralCanvas"></canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <span>🎯</span> Key Objectives & Project Scope
+            </div>
+            <span class="badge badge-blue">Academic Specification</span>
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.9rem;">
+            <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
+              <span style="color: #2563eb; font-weight: bold;">✔</span>
+              <div>
+                <strong>Centralize Data:</strong> Unified data layer connecting student profiles, academic CGPA, backlogs, certifications, and live placement drives.
+              </div>
+            </li>
+            <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
+              <span style="color: #2563eb; font-weight: bold;">✔</span>
+              <div>
+                <strong>Dynamic Employability Scoring:</strong> Machine learning multi-criteria evaluation model analyzing academics (25%), technical depth (30%), aptitude (20%), and interviews (15%).
+              </div>
+            </li>
+            <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
+              <span style="color: #2563eb; font-weight: bold;">✔</span>
+              <div>
+                <strong>Automated NLP Matching:</strong> TF-IDF vectorization and Cosine Similarity to objectively score and rank resume suitability against employer job descriptions.
+              </div>
+            </li>
+            <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
+              <span style="color: #2563eb; font-weight: bold;">✔</span>
+              <div>
+                <strong>AI Mock Interview Simulator:</strong> Evaluates verbal spoken responses and technical answers with instant feedback, keyword coverage, and articulation scoring.
+              </div>
+            </li>
+            <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
+              <span style="color: #2563eb; font-weight: bold;">✔</span>
+              <div>
+                <strong>Placement Analytics Dashboard:</strong> Live institutional statistics, department-wise placement breakdown, and trend forecasting for placement officers.
+              </div>
+            </li>
+          </ul>
+
+          <div style="margin-top: 1.5rem; padding: 1rem; background: #eff6ff; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <div style="font-weight: 700; color: #1e40af; font-size: 0.85rem;">PREDICTIVE ANALYTICS HIGHLIGHT</div>
+            <div style="font-size: 0.85rem; color: #1e3a8a; margin-top: 0.25rem;">
+              Reduces manual coordination effort by <strong>75%</strong> and shortens the campus placement cycle from 90 days to under 25 days with automated shortlisting.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: STUDENT CAREER PORTAL & SCORE -->
+    <!-- ========================================== -->
+    <div id="tab-student" class="tab-pane">
+
+      <!-- Student Banner -->
+      <div class="card" style="margin-bottom: 1.5rem; background: linear-gradient(135deg, #1e293b, #0f172a); color: white;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="width: 64px; height: 64px; border-radius: 50%; background: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 1.75rem; font-weight: 800;">
+              VS
+            </div>
+            <div>
+              <h2 id="student-name-header" style="font-size: 1.4rem; font-weight: 800;">Vivek Sharma</h2>
+              <p style="color: #94a3b8; font-size: 0.9rem;">
+                Roll No: <span id="student-roll-header" style="color: white; font-weight: 600;">2021BCSE042</span> • 
+                Dept: <span id="student-dept-header" style="color: #38bdf8; font-weight: 600;">CSE</span> • 
+                Semester 8 • 
+                Target Role: <strong id="student-target-header" style="color: #f59e0b;">Full Stack Developer</strong>
+              </p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; align-items: center;">
+            <span id="student-status-badge" class="badge badge-amber" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">IN PROCESS</span>
+            <button class="btn btn-primary btn-sm" onclick="recalculateScore()">⚡ Refresh AI Score</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Score Overview & Radar Breakdown -->
+      <div class="grid-3" style="margin-bottom: 1.5rem;">
+        
+        <!-- Overall Employability Gauge -->
+        <div class="card" style="text-align: center;">
+          <div class="card-header">
+            <div class="card-title"><span>🎯</span> Dynamic Employability Score</div>
+            <span id="readiness-tier-badge" class="badge badge-green">Placement Ready</span>
+          </div>
+          <div class="score-circle-wrapper">
+            <div class="radial-progress">
+              <svg width="160" height="160" viewBox="0 0 160 160">
+                <circle cx="80" cy="80" r="70" fill="none" stroke="#e2e8f0" stroke-width="14"></circle>
+                <circle id="employability-circle" cx="80" cy="80" r="70" fill="none" stroke="#2563eb" stroke-width="14" stroke-dasharray="440" stroke-dashoffset="65" stroke-linecap="round"></circle>
+              </svg>
+              <div class="radial-progress-value">
+                <div id="employability-num" class="num">85.2</div>
+                <div class="lbl">Out of 100</div>
+              </div>
+            </div>
+          </div>
+          <p id="employability-summary" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">
+            Calculated via multi-factor ML model combining academics, verified technical skills, aptitude results, and mock interview articulation.
+          </p>
+        </div>
+
+        <!-- 5-Pillar Score Breakdown -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span>📊</span> 5-Factor Score Breakdown</div>
+            <span class="badge badge-blue">ML Model Weights</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                <span>Academic Record (25% wt)</span>
+                <strong id="bar-academic-val">88.5%</strong>
+              </div>
+              <div style="height: 8px; background: #f1f5f9; border-radius: 4px; overflow: hidden;">
+                <div id="bar-academic" style="width: 88.5%; height: 100%; background: #3b82f6;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                <span>Technical Skills Matrix (30% wt)</span>
+                <strong id="bar-tech-val">84.0%</strong>
+              </div>
+              <div style="height: 8px; background: #f1f5f9; border-radius: 4px; overflow: hidden;">
+                <div id="bar-tech" style="width: 84%; height: 100%; background: #10b981;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                <span>Aptitude Assessment (20% wt)</span>
+                <strong id="bar-apt-val">85.0%</strong>
+              </div>
+              <div style="height: 8px; background: #f1f5f9; border-radius: 4px; overflow: hidden;">
+                <div id="bar-apt" style="width: 85%; height: 100%; background: #f59e0b;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                <span>Mock Interview & Soft Skills (15% wt)</span>
+                <strong id="bar-interview-val">82.0%</strong>
+              </div>
+              <div style="height: 8px; background: #f1f5f9; border-radius: 4px; overflow: hidden;">
+                <div id="bar-interview" style="width: 82%; height: 100%; background: #8b5cf6;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                <span>Projects & Certifications (10% wt)</span>
+                <strong id="bar-proj-val">90.0%</strong>
+              </div>
+              <div style="height: 8px; background: #f1f5f9; border-radius: 4px; overflow: hidden;">
+                <div id="bar-proj" style="width: 90%; height: 100%; background: #06b6d4;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Radar Chart Visualizer -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span>🕸️</span> Competency Radar</div>
+            <span class="badge badge-purple">Candidate Vector</span>
+          </div>
+          <div style="position: relative; height: 220px;">
+            <canvas id="competencyRadarChart"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Skill Gap Analysis & Resume NLP Parsing -->
+      <div class="grid-2">
+
+        <!-- Skill Gap Analysis -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span>🔍</span> Dynamic Skill-Gap Analysis</div>
+            <span class="badge badge-amber">Benchmarked against Industry</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Target Role: <strong>Full Stack Developer</strong>. Below are identified missing skills required for Top-Tier SDE placements.
+          </p>
+          <div id="skill-gap-container" style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <!-- Rendered by JS -->
+          </div>
+          <div style="margin-top: 1.25rem;">
+            <button class="btn btn-outline btn-sm" onclick="openTab('tab-upskilling')">
+              🚀 Explore Personalized Upskilling Modules
+            </button>
+          </div>
+        </div>
+
+        <!-- AI Resume NLP Parser -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span>📄</span> NLP Resume Parser & Auto-Extractor</div>
+            <span class="badge badge-blue">Entity Recognition</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Paste resume content below or click "Load Demo Resume". The NLP engine extracts technical skills, education, CGPA, projects, and automatically recalculates your Employability Score.
+          </p>
+          <div class="form-group">
+            <textarea id="resumeInput" class="form-textarea" rows="6" placeholder="Paste your resume plain text here..."></textarea>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-sm" onclick="parseResume()">⚡ Run AI Resume Parsing</button>
+            <button class="btn btn-secondary btn-sm" onclick="loadSampleResume()">📋 Load Sample Tech Resume</button>
+          </div>
+          <div id="resume-parsed-output" style="margin-top: 1rem; display: none; padding: 0.85rem; background: #f8fafc; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 0.85rem;">
+            <!-- Output populated by JS -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: AI JOB MATCHING & RECOMMENDATIONS -->
+    <!-- ========================================== -->
+    <div id="tab-matching" class="tab-pane">
+
+      <div style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2 style="font-size: 1.4rem; font-weight: 800; color: #0f172a;">
+            AI Recommendation & Matching Engine
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Natural Language Processing (NLP) matches student resumes against live campus drives using TF-IDF Vectorization and Cosine Similarity.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-secondary btn-sm" onclick="loadJobRecommendations()">🔄 Refresh Matches</button>
+        </div>
+      </div>
+
+      <!-- Recommendation Cards List -->
+      <div id="job-recommendations-list" style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: AI MOCK INTERVIEW & APTITUDE PREP -->
+    <!-- ========================================== -->
+    <div id="tab-interview" class="tab-pane">
+
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.4rem; font-weight: 800; color: #0f172a;">
+          AI-Simulated Mock Interview & Aptitude Testing
+        </h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Evaluates verbal spoken responses and technical answers with instant feedback on clarity, technical depth, and industry concepts.
+        </p>
+      </div>
+
+      <!-- Sub Tabs: Interview Simulator vs Aptitude Module -->
+      <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+        <button id="subtab-interview-btn" class="btn btn-primary btn-sm" onclick="toggleInterviewSubtab('mock')">
+          🎙️ Spoken/Text Interview Simulator
+        </button>
+        <button id="subtab-aptitude-btn" class="btn btn-secondary btn-sm" onclick="toggleInterviewSubtab('aptitude')">
+          📝 Aptitude Assessment Quiz
+        </button>
+      </div>
+
+      <!-- SUBTAB 1: MOCK INTERVIEW SIMULATOR -->
+      <div id="subtab-mock-content">
+        <div class="grid-2">
+
+          <!-- Question & Recording Panel -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span>💬</span> Simulated Interview Question</div>
+              <span id="interview-q-difficulty" class="badge badge-purple">MEDIUM</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Select Interview Topic / Category:</label>
+              <select id="interview-question-select" class="form-select" onchange="onInterviewQuestionChange()">
+                <!-- Populated by JS -->
+              </select>
+            </div>
+
+            <div style="background: #f8fafc; border-radius: 8px; padding: 1rem; border-left: 4px solid var(--primary); margin-bottom: 1.25rem;">
+              <div style="font-weight: 700; font-size: 0.8rem; color: #1e40af; margin-bottom: 0.25rem;" id="interview-q-topic">TOPIC: SPRING BOOT & CONCURRENCY</div>
+              <p id="interview-q-text" style="font-size: 1.05rem; font-weight: 600; color: #0f172a; line-height: 1.5;">
+                Loading question...
+              </p>
+              <div style="margin-top: 0.75rem;">
+                <button class="btn btn-outline btn-sm" onclick="speakQuestion()">🔊 Read Question Aloud</button>
+              </div>
+            </div>
+
+            <!-- Voice Mic Simulator -->
+            <div id="micBox" class="mic-box">
+              <button id="micBtn" class="mic-btn" onclick="toggleVoiceRecording()" title="Click to Speak">
+                🎤
+              </button>
+              <div id="micStatusText" style="margin-top: 0.75rem; font-weight: 600; font-size: 0.9rem; color: #334155;">
+                Click microphone to speak your answer (Web Speech API)
+              </div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">
+                Or type directly in the answer box below
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
+              <label class="form-label">Your Transcribed / Written Answer:</label>
+              <textarea id="studentAnswerText" class="form-textarea" rows="5" placeholder="Speak or write your comprehensive technical explanation here..."></textarea>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem;">
+              <button class="btn btn-primary" onclick="submitInterviewAnswer()">⚡ Submit & Evaluate with AI</button>
+              <button class="btn btn-secondary" onclick="loadSampleAnswer()">💡 Load High-Scoring Sample</button>
+            </div>
+
+          </div>
+
+          <!-- Real-Time Evaluation Result -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span>🤖</span> AI Evaluation & Performance Feedback</div>
+              <span id="eval-rating-badge" class="badge badge-gray">Awaiting Answer</span>
+            </div>
+
+            <div id="eval-empty-placeholder" style="text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
+              <div style="font-size: 3rem; margin-bottom: 0.5rem;">🎙️</div>
+              <p>Record or type your response on the left and submit to receive instant AI scoring, keyword breakdown, and articulation analysis.</p>
+            </div>
+
+            <div id="eval-result-content" style="display: none;">
+              <!-- Score Bars -->
+              <div class="grid-3" style="margin-bottom: 1rem; text-align: center;">
+                <div style="background: #f8fafc; padding: 0.75rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                  <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">OVERALL SCORE</div>
+                  <div id="eval-overall-score" style="font-size: 1.8rem; font-weight: 800; color: #2563eb;">--</div>
+                </div>
+                <div style="background: #f8fafc; padding: 0.75rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                  <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">TECH ACCURACY</div>
+                  <div id="eval-tech-score" style="font-size: 1.8rem; font-weight: 800; color: #10b981;">--</div>
+                </div>
+                <div style="background: #f8fafc; padding: 0.75rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                  <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">CLARITY & SPEECH</div>
+                  <div id="eval-clarity-score" style="font-size: 1.8rem; font-weight: 800; color: #8b5cf6;">--</div>
+                </div>
+              </div>
+
+              <!-- Keyword Coverage -->
+              <div style="margin-bottom: 1rem;">
+                <div style="font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem;">Industry Keywords Identified:</div>
+                <div id="eval-keywords-covered" class="skill-tags"></div>
+              </div>
+
+              <div style="margin-bottom: 1rem;">
+                <div style="font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem; color: #b45309;">Missing Crucial Concepts:</div>
+                <div id="eval-keywords-missing" class="skill-tags"></div>
+              </div>
+
+              <!-- Structured AI Feedback -->
+              <div style="background: #eff6ff; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary); margin-bottom: 1rem;">
+                <div style="font-weight: 700; font-size: 0.85rem; color: #1e40af; margin-bottom: 0.25rem;">AI COACH FEEDBACK:</div>
+                <p id="eval-feedback-text" style="font-size: 0.85rem; color: #1e3a8a; line-height: 1.5;"></p>
+              </div>
+
+              <!-- Improvement Tips -->
+              <div>
+                <div style="font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem;">Actionable Improvement Tips:</div>
+                <ul id="eval-tips-list" style="font-size: 0.85rem; padding-left: 1.25rem; color: #334155; display: flex; flex-direction: column; gap: 0.35rem;">
+                </ul>
+              </div>
+
+              <!-- Sample Ideal Answer Toggle -->
+              <div style="margin-top: 1rem; border-top: 1px solid #e2e8f0; padding-top: 0.75rem;">
+                <details>
+                  <summary style="font-size: 0.85rem; font-weight: 700; color: #2563eb; cursor: pointer;">
+                    View Recommended Model Answer
+                  </summary>
+                  <p id="eval-ideal-answer" style="margin-top: 0.5rem; font-size: 0.85rem; background: #f8fafc; padding: 0.75rem; border-radius: 6px; color: #334155; line-height: 1.5;"></p>
+                </details>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SUBTAB 2: APTITUDE MODULE -->
+      <div id="subtab-aptitude-content" style="display: none;">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span>📝</span> Campus Aptitude & Coding MCQs Test</div>
+            <span class="badge badge-blue">Auto-Graded Module</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+            Complete the questions below. Instant evaluation will automatically update your Aptitude Score in your Employability Profile.
+          </p>
+
+          <form id="aptitudeForm" onsubmit="submitAptitudeTest(event)">
+            <div id="aptitudeQuestionsContainer" style="display: flex; flex-direction: column; gap: 1.5rem;">
+              <!-- Populated by JS -->
+            </div>
+            <div style="margin-top: 2rem;">
+              <button type="submit" class="btn btn-primary">Submit Aptitude Test</button>
+            </div>
+          </form>
+
+          <div id="aptitudeResultBox" style="display: none; margin-top: 1.5rem; padding: 1.25rem; background: #ecfdf5; border-radius: 8px; border: 1px solid #a7f3d0;">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 5: PLACEMENT ANALYTICS DASHBOARD (Fig 3) -->
+    <!-- ========================================== -->
+    <div id="tab-analytics" class="tab-pane">
+
+      <!-- Header matching Page 3 Fig 3 -->
+      <div style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2 style="font-size: 1.4rem; font-weight: 800; color: #0f172a;">
+            Placement Analytics Dashboard (Institutional TPO)
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Real-time analytics dashboard tracking department-wise conversion rates, salary packages, and predictive batch forecasts (Fig 3).
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <a href="javascript:void(0)" onclick="window.open(API_BASE + '/api/analytics/export')" class="btn btn-outline btn-sm">
+            📥 Export Placement Report (CSV)
+          </a>
+          <button class="btn btn-secondary btn-sm" onclick="loadAnalyticsDashboard()">
+            🔄 Refresh Analytics
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Stat Widgets -->
+      <div class="grid-4" style="margin-bottom: 1.5rem;">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #eff6ff; color: #2563eb;">👥</div>
+          <div class="stat-info">
+            <div class="stat-label">Total Batch Students</div>
+            <div id="kpi-total-students" class="stat-value">55</div>
+            <div class="stat-sub">Across 5 Engineering Depts</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #ecfdf5; color: #059669;">🎯</div>
+          <div class="stat-info">
+            <div class="stat-label">Overall Placed</div>
+            <div id="kpi-placed-students" class="stat-value">48</div>
+            <div id="kpi-placed-pct" class="stat-sub">87.3% Conversion Rate</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #fef3c7; color: #d97706;">💰</div>
+          <div class="stat-info">
+            <div class="stat-label">Average CTC</div>
+            <div id="kpi-avg-ctc" class="stat-value">11.4 LPA</div>
+            <div class="stat-sub">Median: 9.5 LPA</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #f3e8ff; color: #7c3aed;">🏆</div>
+          <div class="stat-info">
+            <div class="stat-label">Highest Package</div>
+            <div id="kpi-high-ctc" class="stat-value">32.0 LPA</div>
+            <div class="stat-sub">Google Cloud Backend</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FIG 3 EXACT REPLICATION: Placement rate by department + 87% Placed Gauge -->
+      <div class="grid-2" style="margin-bottom: 1.5rem;">
+
+        <!-- Department-wise Bar Chart (Fig 3 Left) -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <span>📊</span> Placement Rate by Department (Fig 3)
+            </div>
+            <span class="badge badge-blue">Department Comparison</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Comparative placement conversion rates across CSE, IT, ECE, MECH, and CIVIL departments.
+          </p>
+          <div style="position: relative; height: 280px;">
+            <canvas id="deptPlacementBarChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 87% Placed Radial / Donut Gauge (Fig 3 Right) -->
+        <div class="card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+          <div class="card-header" style="width: 100%;">
+            <div class="card-title">
+              <span>🎯</span> Expected Outcome: Campus Placement Rate
+            </div>
+            <span class="badge badge-green">Live Batch</span>
+          </div>
+          <div class="score-circle-wrapper" style="padding: 1rem 0;">
+            <div class="radial-progress" style="width: 180px; height: 180px;">
+              <svg width="180" height="180" viewBox="0 0 180 180">
+                <circle cx="90" cy="90" r="75" fill="none" stroke="#e2e8f0" stroke-width="16"></circle>
+                <circle id="placed-radial-circle" cx="90" cy="90" r="75" fill="none" stroke="#f59e0b" stroke-width="16" stroke-dasharray="471" stroke-dashoffset="61" stroke-linecap="round"></circle>
+              </svg>
+              <div class="radial-progress-value">
+                <div id="fig3-placed-pct-label" class="num" style="color: #0f172a; font-size: 2.4rem;">87%</div>
+                <div class="lbl" style="font-size: 0.85rem; font-weight: 700; color: #f59e0b;">Placed</div>
+              </div>
+            </div>
+          </div>
+          <div style="font-size: 0.9rem; font-weight: 600; color: #1e293b;">
+            Current Placement Conversion Rate: <span id="fig3-placed-rate-text" style="color: #2563eb;">87.3%</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); max-width: 380px; margin-top: 0.25rem;">
+            Predictive linear projection model forecasts final batch outcome of <strong>91.4%</strong> by conclusion of upcoming campus drives.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Predictive Trends & Company Distribution -->
+      <div class="grid-2" style="margin-bottom: 1.5rem;">
+        
+        <!-- Monthly Placement Trends & Forecast -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span>📈</span> Predictive Placement Trend & Drive Velocity</div>
+            <span class="badge badge-purple">ML Regression Forecast</span>
+          </div>
+          <div style="position: relative; height: 240px;">
+            <canvas id="monthlyTrendChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Top Recruiters Distribution -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span>🏢</span> Top Hiring Partners & Offers</div>
+            <span class="badge badge-blue">Recruiter Matrix</span>
+          </div>
+          <div style="position: relative; height: 240px;">
+            <canvas id="topRecruitersChart"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- At-Risk Students Early Intervention Table -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title" style="color: #b91c1c;">
+            <span>⚠️</span> At-Risk Students: Early Warning & Intervention Cohort
+          </div>
+          <span class="badge badge-red">Faculty Action Required</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Students with placement probability &lt; 50% identified by the predictive logistic regression model for faculty mentoring, backlog clearance, and intensive mock interviews.
+        </p>
+        <div style="overflow-x: auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Roll Number</th>
+                <th>Student Name</th>
+                <th>Department</th>
+                <th>Placement Probability</th>
+                <th>Risk Classification</th>
+                <th>Recommended Interventions</th>
+              </tr>
+            </thead>
+            <tbody id="atRiskStudentsTableBody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 6: RECRUITER SCREENING & SHORTLISTING -->
+    <!-- ========================================== -->
+    <div id="tab-recruiter" class="tab-pane">
+
+      <div style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2 style="font-size: 1.4rem; font-weight: 800; color: #0f172a;">
+            Recruiter Candidate Screening & AI Shortlisting
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Objective AI candidate ranking combining NLP resume matching, verified academic records, and employability scores.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.75rem; align-items: center;">
+          <label style="font-size: 0.85rem; font-weight: 600;">Select Job Drive:</label>
+          <select id="recruiter-job-select" class="form-select" style="width: auto;" onchange="onRecruiterJobChange()">
+            <!-- Populated by JS -->
+          </select>
+          <button class="btn btn-success btn-sm" onclick="runAutoShortlist()">⚡ Auto-Shortlist (≥ 75%)</button>
+        </div>
+      </div>
+
+      <!-- Ranked Candidates Table -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><span>👥</span> AI-Ranked Candidate Pool</div>
+          <span id="candidate-count-badge" class="badge badge-blue">Ranked by NLP Match %</span>
+        </div>
+        <div style="overflow-x: auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Candidate</th>
+                <th>Dept</th>
+                <th>CGPA</th>
+                <th>Employability</th>
+                <th>NLP Match</th>
+                <th>Matching Skills</th>
+                <th>Eligibility</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="recruiterCandidateTableBody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 7: SKILL-GAP UPSKILLING RESOURCES -->
+    <!-- ========================================== -->
+    <div id="tab-upskilling" class="tab-pane">
+
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.4rem; font-weight: 800; color: #0f172a;">
+          Curated Skill-Gap Upskilling Resources
+        </h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Tailored learning tracks and certifications recommended automatically based on your skill deficiency matrix.
+        </p>
+      </div>
+
+      <div id="upskilling-resources-grid" class="grid-3">
+        <!-- Populated by JS -->
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <strong>AI-Powered Student Career & Placement Management System</strong> • Department of Computer Science & Engineering
+      </div>
+      <div>
+        Spring Boot 3 • Java 21 • Machine Learning & NLP Engine • H2 Database
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Logic Scripts -->
+  <script src="js/app.js"></script>
+</body>
 </html>

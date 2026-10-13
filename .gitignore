@@ -1,27 +1,17 @@
-# Dependencies
+target/
+*.class
+*.jar
+*.war
+!target/ai-placement-system-1.0.0.jar
+.mvn/wrapper/maven-wrapper.jar
 node_modules/
-.pnp
-.pnp.js
-
-# Production build outputs
-dist/
-build/
-
-# Environment files
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-*.log
-
-# Editor / OS
+*.env
 .DS_Store
 Thumbs.db
-.vscode/
+*.log
+*.tmp
+*.bak
 .idea/
+*.iml
+.vscode/settings.json
